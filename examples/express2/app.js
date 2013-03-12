@@ -9,7 +9,7 @@ var express = require('express')
   
   
 // Express configuration
-  
+
 var app = express.createServer();
 app.set('view engine', 'ejs');
 app.use(express.logger());
@@ -50,3 +50,4 @@ app.get('/api/userinfo', user.info);
 
 
 app.listen(3000);
+console.log('Server listen to port 3000');

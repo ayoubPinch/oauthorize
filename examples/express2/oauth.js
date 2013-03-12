@@ -144,7 +144,10 @@ exports.accessToken = [
 
 exports.userAuthorization = [
   login.ensureLoggedIn(),
-  server.userAuthorization(function(requestToken, done) {
+  server.userAuthorization(function(requestToken, done) {           //il y a une erreur car il y a pad le oauth_token parameter
+      console.log('________________');
+      console.log('________________');
+      console.log('________________');
     db.requestTokens.find(requestToken, function(err, token) {
       if (err) { return done(err); }
       db.clients.find(token.clientID, function(err, client) {
@@ -154,6 +157,9 @@ exports.userAuthorization = [
     });
   }),
   function(req, res){
+      console.log('=================');
+      console.log('=================');
+      console.log('=================');
     res.render('dialog', { transactionID: req.oauth.transactionID, user: req.user, client: req.oauth.client });
   }
 ]
